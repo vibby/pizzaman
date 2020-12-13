@@ -4,19 +4,10 @@ namespace App\Domain\Entity;
 
 class Ingredient
 {
+    use IdentifiableTrait;
+
     private int $cost = 10;
-    private string $code;
-    private string $name;
-
-    public function __construct(string $code)
-    {
-        $this->code = $code;
-    }
-
-    public function getCode()
-    {
-        return $this->code;
-    }
+    private $pizzas;
 
     public function setCost(int $cost)
     {
@@ -26,15 +17,5 @@ class Ingredient
     public function getCost()
     {
         return $this->cost;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name)
-    {
-        $this->name = $name;
     }
 }

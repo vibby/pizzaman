@@ -6,6 +6,8 @@ use App\Domain\IngredientException;
 
 class Pizza
 {
+    use IdentifiableTrait;
+
     /** @var Ingredient[] */
     private $ingredients = [];
 

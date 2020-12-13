@@ -17,11 +17,11 @@ services:
     ports:
       - "8098:80"
     links:
-      - pm-php-fpm
+      - pm-php
     expose:
       - 8098
 
-  pm-php-fpm:
+  pm-php:
     build:
       context: ./docker/php
     container_name: pm-php-fpm
@@ -32,6 +32,7 @@ services:
       - .:/var/www/pizzaman:ro
       - ./docker/php/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini:ro
       # read/write
+      - ./migrations:/var/www/pizzaman/migrations
       - ./var/log:/var/www/pizzaman/var/log
       - ./var/cache:/var/www/pizzaman/var/cache
     working_dir: /var/www/pizzaman
