@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  pm-db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somePassword
+
+  pm-webserver:
+    image: nginx:stable
+    container_name: pm-webserver
+    volumes:
+      - .:/var/www/pizzaman:ro
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./var/log/nginx:/var/log/nginx
+    ports:
+      - "8098:80"
+    links:
+      - pm-php-fpm
+    expose:
+      - 8098
+
+  pm-php-fpm:
+    build:
+      context: ./docker/php
+    container_name: pm-php-fpm
+    ports:
+      - 9000:9000
+    volumes:
+      # read only
+      - .:/var/www/pizzaman:ro
+      - ./docker/php/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini:ro
+      # read/write
+      - ./var/log:/var/www/pizzaman/var/log
+      - ./var/cache:/var/www/pizzaman/var/cache
+    working_dir: /var/www/pizzaman
+    links:
+      - pm-db
+    depends_on:
+      - pm-db
