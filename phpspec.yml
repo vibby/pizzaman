@@ -1,0 +1,5 @@
+#composer_suite_detection: true
+suites:
+  default:
+    namespace: App
+    psr4_prefix: App
