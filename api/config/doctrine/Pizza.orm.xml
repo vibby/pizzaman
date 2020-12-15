@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Domain\Entity\Pizza" table="pizza">
+    <id name="code" type="string" column="code"/>
+    <field name="name" type="string" column="name" length="128"/>
+    <many-to-many field="ingredients" target-entity="App\Domain\Entity\Ingredient" inversed-by="pizzas" fetch="LAZY">
+        <cascade>
+            <cascade-persist/>
+        </cascade>
+      <join-table name="pizza_ingredient">
+        <join-columns>
+          <join-column name="pizza_id" referenced-column-name="code"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="ingredient_id" referenced-column-name="code"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

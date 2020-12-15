@@ -1,0 +1,18 @@
+resources:
+  App\Domain\Entity\Ingredient:
+    shortName: 'Ingredient'
+    description: 'Ingredients'
+    iri: 'http://schema.org/recipeIngredient'
+    attributes:
+      pagination_items_per_page: 25
+      normalization_context:
+        groups: ['ingredient']
+      denormalization_context:
+        groups: ['ingredient']
+    collectionOperations:
+      get: ~
+      post: ~
+    itemOperations:
+      get: ~
+      put: ~
+      delete: ~

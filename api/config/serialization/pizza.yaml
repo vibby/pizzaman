@@ -1,0 +1,12 @@
+App\Domain\Entity\Pizza:
+  attributes:
+    code:
+      groups: ['ingredient:in', 'ingredient:out', 'pizza:in', 'pizza:out']
+    name:
+      groups: ['ingredient:in', 'ingredient:out', 'pizza:in', 'pizza:out']
+    ingredients:
+      groups: ['pizza:in', 'pizza:out']
+    getCost:
+        groups: ['pizza']
+    getPrice:
+        groups: ['pizza']

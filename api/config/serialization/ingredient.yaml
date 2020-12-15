@@ -1,0 +1,10 @@
+App\Domain\Entity\Ingredient:
+  attributes:
+    code:
+      groups: ['ingredient:read', 'ingredient:write', 'pizza:read', 'pizza:write']
+    name:
+      groups: ['ingredient:read',, 'ingredient:write', 'pizza:read', 'pizza:write']
+    pizzas:
+      groups: ['ingredient:read', 'ingredient:write']
+    cost:
+      groups: ['ingredient:read', 'ingredient:write', 'pizza:read', 'pizza:write']

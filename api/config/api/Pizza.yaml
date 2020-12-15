@@ -1,0 +1,18 @@
+resources:
+  App\Domain\Entity\Pizza:
+    shortName: 'Pizza'
+    description: 'Pizzas'
+    iri: 'https://schema.org/Recipe'
+    attributes:
+      pagination_items_per_page: 25
+      normalization_context:
+        groups: ['pizza']
+      denormalization_context:
+        groups: ['pizza']
+    collectionOperations:
+      get: ~
+      post: ~
+    itemOperations:
+      get: ~
+      put: ~
+      delete: ~
