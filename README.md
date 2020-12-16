@@ -34,3 +34,4 @@ The app is separated in two layers :
 
 * Add validation on entity properties
 * Add cost and price of pizza in the serialisation of the pizza (should work as defined in config, but … not yet ;) )
+* make list of ingredients in a pizza with a specific order
